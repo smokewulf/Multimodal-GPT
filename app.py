@@ -28,7 +28,17 @@ class Inferencer:
             print("tuning_config not found in checkpoint")
         else:
             print("tuning_config found in checkpoint: ", tuning_config)
+        vision_encoder = "your_vision_encoder_here"  # Placeholder
+        lang_encoder = "your_lang_encoder_here"      # Placeholder
+        eoc_token_id = 0                             # Placeholder
+        media_token_id = 0                           # Placeholder
+        vis_dim = 512                                # Placeholder
         model, image_processor, tokenizer = create_model_and_transforms(
+            vision_encoder=vision_encoder,   # New Parameters Added
+            lang_encoder=lang_encoder,
+            eoc_token_id=eoc_token_id,
+            media_token_id=media_token_id,
+            vis_dim=vis_dim,
             model_name="open_flamingo",
             clip_vision_encoder_path="ViT-L-14",
             clip_vision_encoder_pretrained="openai",
@@ -358,7 +368,7 @@ def build_conversation_demo():
 if __name__ == "__main__":
     llama_path = "checkpoints/llama-7b_hf"
     open_flamingo_path = "checkpoints/OpenFlamingo-9B/checkpoint.pt"
-    finetune_path = "checkpoints/mmgpt-lora-v0-release.pt"
+    finetune_path = "/home/wulfzbaine/Desktop/Multimodal-GPT/checkpoints/mmgpt-lora-v0-release.pt"
 
     inferencer = Inferencer(
         llama_path=llama_path,
